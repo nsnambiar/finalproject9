@@ -47,7 +47,7 @@ app.jinja_env.filters['b64encode'] = b64encode
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/',methods=["GET","POST"])
+@app.route('/')
 def start():
     db.create_all()
     posts = BlogPost.query.order_by(desc(BlogPost.date)).all()
