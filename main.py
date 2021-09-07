@@ -166,9 +166,9 @@ def issues(post_id):
         )
         db.session.add(new_comment)
         db.session.commit()
-    return render_template("blog-posst.html",all_post=issuepost,comment=comment)
+    return render_template("blog-posst.html",all_posts=issuepost,comment=comment)
 
-@app.route("/<post_id>", methods=["GET","POST"])
+@app.route("/blog:<post_id>", methods=["GET","POST"])
 def show_blog(post_id):
     comment = CommentForm()
     request_post = BlogPost.query.get(post_id)
@@ -184,7 +184,7 @@ def show_blog(post_id):
         )
         db.session.add(new_comment)
         db.session.commit()
-    return render_template("blog-posst.html",all_post=request_post,comment=comment)
+    return render_template("blog-posst.html",all_posts=request_post,comment=comment)
 
 
 
