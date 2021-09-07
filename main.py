@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['HEROKU_POSTGRESQL_COPPER_URL']
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db.init_app(app)
 Bootstrap(app)
 ckeditor=CKEditor(app)
 
@@ -33,79 +33,7 @@ google = oauths.register(
     client_kwargs = {'scope': 'openid email profile'},
 )
 
-
-class User(UserMixin,db.Model):
-    __tablename__ = "users"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100), unique=True)
-    img=db.Column(db.Text)
-    posts = relationship("BlogPost", back_populates="author")
-    issueposts=relationship("IssueBlogPost", back_populates="author")
-    comments = relationship("Comment", back_populates="comment_author")
-    issuecomments=relationship("IssueComment", back_populates="comment_author")
-
-class BlogPost(db.Model):
-    __tablename__ = "blog_posts"
-    id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    author = relationship("User", back_populates="posts")
-    title = db.Column(db.String(250), unique=True, nullable=False)
-    subtitle = db.Column(db.String(250), nullable=False)
-    date = db.Column(db.String(250), nullable=False)
-    body = db.Column(db.Text, nullable=False)
-    img=db.Column(db.Text)
-    filetype = db.Column(db.Text, nullable=False)
-    comments = relationship("Comment", back_populates="parent_post")
-
-
-class Comment(db.Model):
-    __tablename__ = "comments"
-    id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
-    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    parent_post = relationship("BlogPost", back_populates="comments")
-    comment_author = relationship("User", back_populates="comments")
-    text = db.Column(db.Text, nullable=False)
-
-
-class IssueBlogPost(db.Model):
-    __tablename__ = "issueblog_posts"
-    id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    author = relationship("User", back_populates="issueposts")
-    title = db.Column(db.String(250), unique=True, nullable=False)
-    date = db.Column(db.String(250), nullable=False)
-    body = db.Column(db.Text, nullable=False)
-    img=db.Column(db.Text)
-    comments = relationship("IssueComment", back_populates="parent_post")
-class IssueComment(db.Model):
-    __tablename__ = "issuecomments"
-    id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey("issueblog_posts.id"))
-    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    parent_post = relationship("IssueBlogPost", back_populates="comments")
-    comment_author = relationship("User", back_populates="issuecomments")
-    text = db.Column(db.Text, nullable=False)
-
 db.create_all()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 login_manager=LoginManager()
 login_manager.init_app(app)
@@ -122,6 +50,7 @@ def load_user(user_id):
 
 @app.route('/')
 def start():
+
     posts = BlogPost.query.order_by(desc(BlogPost.date)).all()
     issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).all()
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
