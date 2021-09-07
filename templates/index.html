@@ -1,4 +1,5 @@
 {% include "header.html" %}
+{% block content %}
 <style xmlns="http://www.w3.org/1999/html">
 .avatar {
   vertical-align: middle;
@@ -20,7 +21,6 @@
 		    <div class="item mb-5">
                  </div><!--//media-->
                 <img class="img-fluid" src="https://cdn.dribbble.com/users/1145907/screenshots/5776832/searching_-_no_results_2x.png?compress=1&resize=400x300"  width="700" height="1350"  >
-		    </div><!--//item-->
 			    <div class="media">
                 </div>
 								</div><!-- end blog-box -->
@@ -28,8 +28,11 @@
                         </div><!-- end page-wrapper -->
                         <div class="row">
                         </div><!-- end row -->
-                     <center>
-                       </div><!-- end col -->
+
+                        {% if all_post.has_prev %} <a href="{{url_for('view',page=all_post.prev_num)}}" class="previous">&laquo; Previous</a>{% else %}<a href="" class="previous">&laquo; Previous</a>{% endif %}
+                                    {% if all_post.has_next %}<a href="{{url_for('view', page=all_post.next_num)}}" class="next">Next &raquo;</a>{% else %}<a href="" class="next">Next &raquo;</a>{% endif %}
+
+            </div>
             </div>
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -92,6 +95,8 @@
                         <div class="row">
                         </div>
 
+                        {% if all_post.has_prev %} <a href="{{url_for('view',page=all_post.prev_num)}}" class="previous">&laquo; Previous</a>{% else %}<a href="" class="previous">&laquo; Previous</a>{% endif %}
+                                    {% if all_post.has_next %}<a href="{{url_for('view', page=all_post.next_num)}}" class="next">Next &raquo;</a>{% else %}<a href="" class="next">Next &raquo;</a>{% endif %}
                         <br>
                     </div><!-- end col -->
 
@@ -137,7 +142,7 @@
   </section>
 
 
-{% elif all_post %}
+{% else %}
 <section class="section wb" >
             <div class="container">
                <div class="main-box-head">
@@ -168,7 +173,9 @@
                         <div class="row">
                         </div>
 
-                       <br>
+                        {% if all_post.has_prev %} <a href="{{url_for('view',page=all_post.prev_num)}}" class="previous">&laquo; Previous</a>{% else %}<a href="" class="previous">&laquo; Previous</a>{% endif %}
+                                    {% if all_post.has_next %}<a href="{{url_for('view', page=all_post.next_num)}}" class="next">Next &raquo;</a>{% else %}<a href="" class="next">Next &raquo;</a>{% endif %}
+  <br>
                     </div><!-- end col -->
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -217,3 +224,4 @@
 <br><br><br>
 {% endif%}
 {% include "footer.html" %}
+{% endblock %}

@@ -13,13 +13,13 @@
     {% if all_post.img == True %}
 <article class="blog-post px-3 py-5 p-md-5">
 		    <div class="container">
-                    <center> <h2 class="title mb-2">{{all_post.title}}</h2>
-				    <div class="meta mb-3"><h6 class="date">Published on {{all_post.date}}.Published By {{all_post.author.name}} </h6></div>
+                     <center> <h2 class="title mb-2">{{all_post.title}}</h2></center>
+				   <center> <div class="meta mb-3"><h6 class="date">Published on {{all_post.date}}.Published By {{all_post.author.name}} </h6></div></center>
 			    <div class="blog-post-body">
 				    <center><figure class="blog-banner">
 				        </figure>
-                    <h6 class="title mb-2">{{all_post.subtitle}}</h6>
-                    </center><div class="boxed">
+                   <center><h6 class="title mb-2">{{all_post.subtitle}}</h6></center>
+                    <div class="boxed">
                       <a href=""><img  src="data:;base64,{{all_post.img|b64encode}}"  class="img-fluid" width="500" height="250" align="center"></a>
                     <p>{{all_post.body|safe}}</p></div>
                 </div><!--//container-->
@@ -55,13 +55,13 @@
 
 <article class="blog-post px-3 py-5 p-md-5">
 		    <div class="container">
-                    <center> <h2 class="title mb-2">{{all_post.title}}</h2>
-				    <div class="meta mb-3"><h6 class="date">Published on {{all_post.date}}.Published By {{all_post.author.name}} </h6></div>
+                <center> <h2 class="title mb-2">{{all_post.title}}</h2></center>
+				   <center> <div class="meta mb-3"><h6 class="date">Published on {{all_post.date}}.Published By {{all_post.author.name}} </h6></div></center>
 			    <div class="blog-post-body">
-				    <center><figure class="blog-banner">
+				   <figure class="blog-banner">
 				        </figure>
-                    <h6 class="title mb-2">{{all_post.subtitle}}</h6>
-                    </center><div class="boxed">
+                   <center> <h6 class="title mb-2">{{all_post.subtitle}}</h6></center>
+                    <div class="boxed">
                       <p>{{all_post.body|safe}}</p></div>
                 </div><!--//container-->
                 <br>
@@ -83,13 +83,12 @@
                                     </div>
                                     </ul>
                                     <hr>
-
                                 {%endfor%}
 
                                 </nav>
                             </div>
                   </div>
-                    </center>
+
             </div>
 </article>
 {% endif %}
