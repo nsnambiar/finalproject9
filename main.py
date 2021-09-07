@@ -47,14 +47,14 @@ app.jinja_env.filters['b64encode'] = b64encode
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/',methods=["GET"])
+@app.route('/',methods=["GET","POST"])
 def start():
     posts = BlogPost.query.order_by(desc(BlogPost.date)).all()
     issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).all()
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
 
 
-@app.route('/Page<int:page>',methods=['GET'])
+@app.route('/Page<int:page>',methods=["GET","POST"])
 def view(page):
     per_page = 5
     posts = BlogPost.query.order_by(desc(BlogPost.date)).paginate(page,per_page,error_out=False)
