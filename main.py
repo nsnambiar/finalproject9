@@ -47,9 +47,9 @@ app.jinja_env.filters['b64encode'] = b64encode
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/',methods=["GET","POST"])
+@app.route('/',methods=["GET"])
 def start():
-    db.create_all()
+    # db.create_all()
     return "working"
 
 
