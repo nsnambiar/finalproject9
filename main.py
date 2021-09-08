@@ -50,8 +50,8 @@ def load_user(user_id):
 @app.route('/')
 def start():
     #db.create_all()
-    posts = BlogPost.query.order_by(desc(BlogPost.date)).all()
-    issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).all()
+    posts = BlogPost.query.all()
+    issues = IssueBlogPost.query.all()
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
 
 
