@@ -9,6 +9,10 @@ from datetime import *
 from sqlalchemy import desc
 import base64
 import os
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+db=SQLAlchemy()
 
 app=Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
