@@ -33,7 +33,7 @@ google = oauths.register(
     userinfo_endpoint = 'https://openidconnect.googleapis.com/v1/userinfo',  # This is only needed if using openId to fetch user info
     client_kwargs = {'scope': 'openid email profile'},
 )
-db=SQLAlchemy(app
+db=SQLAlchemy(app)
 login_manager=LoginManager()
 login_manager.init_app(app)
 
