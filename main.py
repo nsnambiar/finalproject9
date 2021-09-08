@@ -9,10 +9,7 @@ from datetime import *
 from sqlalchemy import desc
 import base64
 import os
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
-from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-db=SQLAlchemy()
+
 
 app=Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -36,7 +33,7 @@ google = oauths.register(
     userinfo_endpoint = 'https://openidconnect.googleapis.com/v1/userinfo',  # This is only needed if using openId to fetch user info
     client_kwargs = {'scope': 'openid email profile'},
 )
-
+db=SQLAlchemy(app
 login_manager=LoginManager()
 login_manager.init_app(app)
 
@@ -52,7 +49,7 @@ def load_user(user_id):
 
 @app.route('/')
 def start():
-    db.create_all()
+    #db.create_all()
     posts = BlogPost.query.order_by(desc(BlogPost.date)).all()
     issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).all()
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
