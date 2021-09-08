@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://upxgmkxbhplfwm:602f7b5f2470c3a9b6de2dc5bc9dce4977aff61251abcb80793369527bc8eaa6@ec2-44-197-94-126.compute-1.amazonaws.com:5432/d9oimqbn0bomaj'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#db.init_app(app)
+db.init_app(app)
 Bootstrap(app)
 ckeditor=CKEditor(app)
 
@@ -33,7 +33,6 @@ google = oauths.register(
     userinfo_endpoint = 'https://openidconnect.googleapis.com/v1/userinfo',  # This is only needed if using openId to fetch user info
     client_kwargs = {'scope': 'openid email profile'},
 )
-db=SQLAlchemy(app)
 login_manager=LoginManager()
 login_manager.init_app(app)
 
@@ -47,10 +46,11 @@ app.jinja_env.filters['b64encode'] = b64encode
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@app.route('/')
+@app.route('/',methods=["GET","POST"])
 def start():
     #db.create_all()
-    posts = BlogPost.query.all()
+    #posts = BlogPost.query.all()
+    posts = BlogPost.query.order_by(desc(BlogPost.date)).limit(6).all()
     issues = IssueBlogPost.query.all()
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
 
