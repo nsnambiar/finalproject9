@@ -9,6 +9,7 @@ from datetime import *
 from sqlalchemy import desc
 import base64
 import os
+import psycopg2
 
 
 app=Flask(__name__)
