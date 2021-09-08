@@ -33,8 +33,6 @@ google = oauths.register(
     client_kwargs = {'scope': 'openid email profile'},
 )
 
-db.create_all()
-
 login_manager=LoginManager()
 login_manager.init_app(app)
 
@@ -50,7 +48,7 @@ def load_user(user_id):
 
 @app.route('/')
 def start():
-
+    db.create_all()
     posts = BlogPost.query.order_by(desc(BlogPost.date)).all()
     issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).all()
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
