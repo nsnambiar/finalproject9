@@ -62,7 +62,6 @@ def view(page):
 
 
 
-
 @app.route("/Registration",methods=["GET","POST"])
 def registration():
     Reg_form = RegisterForm()
