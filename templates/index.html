@@ -80,7 +80,7 @@
 				    <img alt="." class="avatar" src="{{post.author.img}}">
 				    <div class="media-body">
 					    <h3 class="title mb-1"><a href="{{url_for('show_blog',post_id=post.id,subtitle=post.subtitle) }}">{{post.title}}</a></h3>
-					    <div class="meta mb-1"><span class="date">Published on {{post.date}}</span><span class=""></span><span class=""><a href=""></a></span></div>
+					    <div class="meta mb-1"><span class="date">Published on {{post.date}}</span><a href=""></a></span></div>
 					    <div class="intro">{{post.subtitle}}</div>
                         <a href="{{url_for('show_blog',post_id=post.id,subtitle=post.subtitle) }}"><button type="submit" class="btn btn-primary">Read more</button></a>
                         <hr>
