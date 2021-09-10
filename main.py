@@ -14,7 +14,7 @@ import psycopg2
 
 app=Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://upxgmkxbhplfwm:602f7b5f2470c3a9b6de2dc5bc9dce4977aff61251abcb80793369527bc8eaa6@ec2-44-197-94-126.compute-1.amazonaws.com:5432/d9oimqbn0bomaj'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://upxgmkxbhplfwm:602f7b5f2470c3a9b6de2dc5bc9dce4977aff61251abcb80793369527bc8eaa6@ec2-44-197-94-126.compute-1.amazonaws.com:5432/d9oimqbn0bomaj'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
