@@ -72,12 +72,11 @@
                     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-list clearfix">
-
                                 <div class="blog-box row">
 								 {% for post in all_post.items %}
 		    <div class="item mb-5">
 			    <div class="media">
-				    <img alt="." class="avatar" src="{{post.author.img}}">
+				    <img alt="`" class="avatar" src="{{post.author.img}}">
 				    <div class="media-body">
 					    <h3 class="title mb-1"><a href="{{url_for('show_blog',post_id=post.id,subtitle=post.subtitle) }}">{{post.title}}</a></h3>
 					    <div class="meta mb-1"><span class="date">Published on {{post.date}}</span><a href=""></a></span></div>
@@ -85,6 +84,7 @@
                         <a href="{{url_for('show_blog',post_id=post.id,subtitle=post.subtitle) }}"><button type="submit" class="btn btn-primary">Read more</button></a>
                         <hr>
 				    </div><!--//media-body-->
+
 			    </div><!--//media-->
 		    </div><!--//item-->
 			{% endfor %}
@@ -157,7 +157,11 @@
 								 {% for post in all_post %}
 		    <div class="item mb-5">
 			    <div class="media">
-				    <img alt="." class="avatar" src="{{post.author.img}}">
+				    {% if post.img %}
+				    <img alt="" class="avatar" src="{{post.author.img}}">
+                    {% else %}
+                    <img src="{{post.author.img | gravatar}}">
+                    {% endif %}
 				    <div class="media-body">
 					    <h3 class="title mb-1"><a href="{{url_for('show_blog',post_id=post.id,subtitle=post.subtitle) }}">{{post.title}}</a></h3>
 					    <div class="meta mb-1"><span class="date">Published on {{post.date}}</span><span class=""></span><span class=""><a href=""></a></span></div>

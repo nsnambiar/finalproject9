@@ -8,6 +8,7 @@ from authlib.integrations.flask_client import OAuth
 from datetime import *
 from sqlalchemy import desc
 import base64
+from flask_gravatar import Gravatar
 import os
 import psycopg2
 
@@ -20,12 +21,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 Bootstrap(app)
 ckeditor=CKEditor(app)
-
+gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 oauths = OAuth(app)
 google = oauths.register(
     name = 'google',
     client_id = "175887749203-gdtkc1h93svnal7gspl415t24ggfd5be.apps.googleusercontent.com",
-    client_secret = "90KgzC26EfXluVqju8LJkRrA",
+    client_secret = "7eiAyJTXyRa57NbI7ailTdhx",
     access_token_url = 'https://accounts.google.com/o/oauth2/token',
     access_token_params = None,
     authorize_url = 'https://accounts.google.com/o/oauth2/auth',
