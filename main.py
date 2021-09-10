@@ -221,5 +221,11 @@ def google_authorize():
         login_user(usersemail)
         return redirect(url_for("start"))
 
+@app.route('/Download')
+def download():
+    return render_template("downloads.html")
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
