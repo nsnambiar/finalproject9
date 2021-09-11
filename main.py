@@ -183,6 +183,7 @@ def show_blog(post_id):
         )
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for("show_blog",post_id=post_id))
     return render_template("blog-posst.html",all_posts=request_post,comment=comment)
 
 
