@@ -67,7 +67,6 @@ def view(page):
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
 
 
-
 @app.route("/Registration",methods=["GET","POST"])
 def registration():
     Reg_form = RegisterForm()
