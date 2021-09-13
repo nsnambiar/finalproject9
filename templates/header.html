@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Terminal Net</title>
+    <title>Techie Beans</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,11 +20,11 @@
 	    <section class="cta-section theme-bg-light py-5">
 
 		    <div class="container text-center">
-                <a href="{{url_for('start')}}"><h2 class="heading">Terminal Net - Technology stuff on the daily basis to internet users</h2></a>
+                <a href="{{url_for('start')}}"><h2 class="heading">Techie Beans - Technology stuff on the daily basis to internet users</h2></a>
                 {% if current_user.name %}
 			    <div class="intro">Hello {{current_user.name}} Welcome to Terminal Net.Click Here to <a href="{{url_for('logout')}}">Logout</a></div>
                  {% else %}
-                <div class="intro">Welcome to Terminal Net. Subscribe and get latest Technical blogs in your inbox.</div>{% endif %}
+                <div class="intro">Welcome to Techie Beans. Subscribe and get latest Technical blogs in your inbox.</div>{% endif %}
 			    <form class="signup-form form-inline justify-content-center pt-3" action="{{url_for('search')}}" method="POST">
                     <div class="form-group">
                         <label class="sr-only" for="semail">Your email</label>

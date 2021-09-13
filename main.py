@@ -51,6 +51,11 @@ def load_user(user_id):
 @app.route('/',methods=["GET","POST"])
 def start():
     db.create_all()
+    # post_id=12
+    # post_to_delete = BlogPost.query.get(post_id)
+    # db.session.delete(post_to_delete)
+    # db.session.commit()
+
     return redirect(url_for("view",page=1))
 
 
@@ -58,7 +63,7 @@ def start():
 def view(page):
     per_page = 5
     posts = BlogPost.query.order_by(desc(BlogPost.date)).paginate(page,per_page,error_out=False)
-    issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).all()
+    issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).limit(3)
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
 
 

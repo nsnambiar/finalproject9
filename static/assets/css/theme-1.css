@@ -103,10 +103,12 @@ height:50px;
 .example {
   background-color: #fdbc6e;
   width: 300px;
-  height: 300px;
+  height: 400px;
   padding: 8px;
   border-radius: 25px;
-  overflow-y: scroll; /* Add the ability to scroll */
+  overflow-y: scroll;
+  overflow: hidden;
+
 }
 .example {
   -ms-overflow-style: none;  /* IE and Edge */
@@ -118,7 +120,7 @@ height:50px;
   width: 300px;
   padding: 8px;
   border-radius: 25px;
-  overflow-y: scroll; /* Add the ability to scroll */
+   /* Add the ability   to scroll */
 }
 .example2 {
   -ms-overflow-style: none;  /* IE and Edge */
