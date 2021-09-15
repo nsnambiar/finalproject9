@@ -51,10 +51,10 @@ def load_user(user_id):
 @app.route('/',methods=["GET","POST"])
 def start():
     db.create_all()
-    post_id=16
-    post_to_delete = BlogPost.query.get(post_id)
-    db.session.delete(post_to_delete)
-    db.session.commit()
+    #post_id=16
+    #post_to_delete = BlogPost.query.get(post_id)
+    #db.session.delete(post_to_delete)
+    #db.session.commit()
 
     return redirect(url_for("view",page=1))
 
