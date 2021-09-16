@@ -29,16 +29,17 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-
 </style>
-
+<section class="section wb">
 <div class="container">
 
-     <div class="aboutbox1">
+
          <h2>About</h2>
-     techiebeans is an Tech Blog and question/answer website for professional and enthusiast Linux/Windows Users., the main aim of this website is to providing Techinical guides for Linux/Windows system administrators.
+                                        <p>techiebeans is an Tech Blog and question/answer website for professional and enthusiast Linux/Windows Users., the main aim of this website is to providing Techinical guides for Linux/Windows system administrators.</p>
+
+                                </div>
      </div>
-</div>
+
 <hr>
 <div class="container">
  {% with messages = get_flashed_messages() %}
@@ -51,12 +52,21 @@
                                         {% endfor %}
                                         {% endif %}
                                     {% endwith %}
-     <div class="aboutbox2">
-         <h2>Contact Us</h2>
+
+
+                                    <div class="blog-box row">
+
+                                    <div class="blog-meta big-meta col-md-8">
+                                         <h2>Contact Us</h2>
            {{ ckeditor.load() }}
         {{ ckeditor.config(name='body') }}
         {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"})}}
         </div>
+    </div>
 </div>
+
+
+
+</section>
 {% include "footer.html" %}
 {% endblock %}
