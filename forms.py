@@ -34,12 +34,7 @@ class CommentForm(FlaskForm):
     comment_text = TextAreaField( "",validators=[DataRequired()])
     submit = SubmitField("Submit Comment")
 
-class Aboutform(FlaskForm):
-    name = StringField("Name *", validators=[DataRequired(), validators.Regexp(r'^[\w.@+-]+$')])
-    phone = StringField("Phone Number *", validators=[DataRequired()])
-    email = StringField('Email *', validators=[DataRequired()])
-    text = TextAreaField("Message *", validators=[DataRequired()])
-    submit = SubmitField("Submit")
+
 
 
 
