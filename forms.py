@@ -41,4 +41,4 @@ class Aboutform(FlaskForm):
     phone = StringField("Phone Number *", validators=[DataRequired()])
     email = StringField('Email *', validators=[DataRequired()])
     text = TextAreaField("Message *", validators=[DataRequired()])
-    submit = SubmitField("Submit"
+    submit = SubmitField("Submit")
