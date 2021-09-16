@@ -26,7 +26,7 @@ class Login(FlaskForm):
 
 class RegisterForm(FlaskForm):
     name = StringField("Username", validators=[DataRequired()])
-    email = StringField('Email',validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(),validators.Email()])
     submit = SubmitField("Sign Me Up!.")
 
 
@@ -39,6 +39,6 @@ class CommentForm(FlaskForm):
 class Aboutform(FlaskForm):
     name = StringField("Name *", validators=[DataRequired(), validators.Regexp(r'^[\w.@+-]+$')])
     phone = StringField("Phone Number *", validators=[DataRequired()])
-    email = StringField('Email *', validators=[DataRequired()])
+    email = StringField('Email *', validators=[DataRequired(),validators.Email()])
     text = TextAreaField("Message *", validators=[DataRequired()])
     submit = SubmitField("Submit")
