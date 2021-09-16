@@ -1,0 +1,62 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+{% include "header.html" %}
+<style>.aboutbox1 {
+  background-color: #c2e1bd;
+  width: 1100px;
+  height: 200px;
+  padding: 8px;
+  border-radius: 18px;
+  overflow-y: scroll;
+  overflow: hidden;
+
+}
+.aboutbox1 {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.aboutbox2 {
+  background-color: #f4f8fa;
+  width: 1100px;
+  height: 570px;
+  padding: 8px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  overflow: hidden;
+
+}
+.aboutbox2 {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+</style>
+
+<div class="container">
+
+     <div class="aboutbox1">
+         <h2>About</h2>
+     techiebeans is an Tech Blog and question/answer website for professional and enthusiast Linux/Windows Users., the main aim of this website is to providing Techinical guides for Linux/Windows system administrators.
+     </div>
+</div>
+<hr>
+<div class="container">
+ {% with messages = get_flashed_messages() %}
+                                     {% if messages %}
+                                        {% for message in messages %}
+                                        <div class="isa_success ">
+                                         <i class="fa fa-info-circle"></i>
+                                            {{ message }}
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+     <div class="aboutbox2">
+         <h2>Contact Us</h2>
+           {{ ckeditor.load() }}
+        {{ ckeditor.config(name='body') }}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"})}}
+        </div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

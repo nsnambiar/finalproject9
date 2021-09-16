@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, TextAreaField, validators,FileField
 from wtforms.validators import DataRequired, URL, Email
 from flask_ckeditor import CKEditorField
+from wtforms.widgets import TextArea
 
 
 class CreatePostForm(FlaskForm):
@@ -20,19 +21,30 @@ class CreateissueForm(FlaskForm):
 
 class Login(FlaskForm):
     name=StringField("Name", validators=[DataRequired(),validators.Regexp(r'^[\w.@+-]+$')])
-    email = StringField('Email',validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(),validators.Email()])
     submit=SubmitField("Login")
 
 
 class RegisterForm(FlaskForm):
     name = StringField("Username", validators=[DataRequired()])
-    email = StringField('Email',validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(),validators.Email()])
     submit = SubmitField("Sign Me Up!.")
 
 
 class CommentForm(FlaskForm):
     comment_text = TextAreaField( "",validators=[DataRequired()])
     submit = SubmitField("Submit Comment")
+
+
+class Aboutform(FlaskForm):
+    name = StringField("Name *", validators=[DataRequired(), validators.Regexp(r'^[\w.@+-]+$')])
+    phone = StringField("Phone Number *", validators=[DataRequired()])
+    email = StringField('Email *', validators=[DataRequired(),validators.Email()])
+    text = TextAreaField("Message *", [validators.optional(), validators.length(max=200)])
+    submit = SubmitField("Submit")
+
+
+
 
 
 

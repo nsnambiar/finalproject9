@@ -231,6 +231,15 @@ def google_authorize():
 def download():
     return render_template("downloads.html")
 
+@app.route('/About',methods=["GET","POST"])
+def About():
+    form=Aboutform()
+    if form.validate_on_submit():
+        flash("Thank You For Your Valuable Feedback")
+        return redirect(url_for("About"))
+    return render_template("about.html",form=form)
+
+
 
 
 if __name__ == "__main__":
