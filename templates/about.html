@@ -42,7 +42,11 @@
 
 <hr>
 <div class="container">
- {% with messages = get_flashed_messages() %}
+                                    <div class="blog-box row">
+
+                                    <div class="blog-meta big-meta col-md-8">
+                                         <h2>Contact Us</h2>
+                                         {% with messages = get_flashed_messages() %}
                                      {% if messages %}
                                         {% for message in messages %}
                                         <div class="isa_success ">
@@ -54,10 +58,6 @@
                                     {% endwith %}
 
 
-                                    <div class="blog-box row">
-
-                                    <div class="blog-meta big-meta col-md-8">
-                                         <h2>Contact Us</h2>
            {{ ckeditor.load() }}
         {{ ckeditor.config(name='body') }}
         {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"})}}
