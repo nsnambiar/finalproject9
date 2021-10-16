@@ -64,7 +64,7 @@ def start():
 @app.route('/Page<int:page>',methods=['GET'])
 def view(page):
     per_page = 5
-    posts = BlogPost.query.order_by(desc(BlogPost.date)).paginate(page,per_page,error_out=False)
+    posts = BlogPost.query.order_by(desc(BlogPost.id)).paginate(page,per_page,error_out=False)
     issues = IssueBlogPost.query.order_by(desc(IssueBlogPost.id)).limit(3)
     return render_template("index.html", all_post=posts, currentuser=current_user, issue_post=issues)
 
