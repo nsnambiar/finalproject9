@@ -24,7 +24,7 @@
                 {% if current_user.name %}
 			    <div class="intro">Hello {{current_user.name}} Welcome to Terminal Net.Click Here to <a href="{{url_for('logout')}}">Logout</a></div>
                  {% else %}
-                <div class="intro">Welcome to Techie Beans. Subscribe and get latest Technical blogs in your inbox.</div>{% endif %}
+                <div class="intro">Welcome to Techie Beans. Subscribe and get latest Technical blogs in your inbox..</div>{% endif %}
 			    <form class="signup-form form-inline justify-content-center pt-3" action="{{url_for('search')}}" method="POST">
                     <div class="form-group">
                         <label class="sr-only" for="semail">Your email</label>
