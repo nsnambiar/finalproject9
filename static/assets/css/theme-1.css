@@ -110,6 +110,7 @@
   border-radius: 20px;
   overflow-y: scroll;
   overflow: hidden;
+  border: 5px solid green;
 
 }
 .example {
