@@ -50,7 +50,7 @@ def load_user(user_id):
 
 @app.route('/',methods=["GET","POST"])
 def start():
-    #db.create_all()
+    db.create_all()
     #post_id=79
     #post_to_delete = BlogPost.query.get(post_id)
     #db.session.delete(post_to_delete)
